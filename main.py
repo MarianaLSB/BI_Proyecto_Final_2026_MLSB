@@ -34,7 +34,7 @@ df_filtered = df[
 st.subheader("Indicadores Clave")
 col1, col2, col3, col4 = st.columns(4)
 col1.metric("Total Listings", f"{len(df_filtered):,}")
-col2.metric("Precio Mediano", f"${df_filtered['price'].median():,.0f} MXN")
+col2.metric("Precio Promedio", f"${df_filtered['price'].median():,.0f} MXN")
 col3.metric("Rating Promedio", f"{df_filtered['review_scores_rating'].mean():.2f} ⭐")
 col4.metric("Alcaldías", f"{df_filtered['neighbourhood_cleansed'].nunique()}")
 st.divider()
