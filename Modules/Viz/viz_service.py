@@ -87,7 +87,7 @@ class AirbnbViz:
         plt.close()
 
     def render_mapa(self, df):
-        st.markdown("### 🗺️ Mapa de Listings en CDMX")
+        st.markdown("### Mapa de Listings en CDMX")
         df_mapa = df[['latitude', 'longitude', 'price', 'name', 'neighbourhood_cleansed']].dropna()
         st.map(df_mapa, latitude='latitude', longitude='longitude', size=20, color='#FF5A5F')
         st.caption(f"Mostrando {len(df_mapa):,} listings en el mapa")
