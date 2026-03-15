@@ -7,4 +7,4 @@ def show_header(text_title: str):
     with col2:
         st.title(text_title)
         st.caption("Developed for: *Business Intelligence*")
-        st.caption("Mariana Lopez S Ballesteros (2026), Universidad Panamericana")
+        st.caption("Alumna: Mariana Lopez S Ballesteros (2026), Universidad Panamericana")
