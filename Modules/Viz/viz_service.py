@@ -113,7 +113,7 @@ class AirbnbViz:
                 'Hotel room':      '#FFB400',
                 'Shared room':     '#9370DB',
             },
-            zoom=10,
+            zoom=zoom_mapa,,
             center={'lat': 19.4326, 'lon': -99.1332},
             height=600,
             labels={'room_type': 'Tipo de cuarto', 'price': 'Precio (MXN)'}
