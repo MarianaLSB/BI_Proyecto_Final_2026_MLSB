@@ -39,7 +39,7 @@ col3.metric("Rating Promedio", f"{df_filtered['review_scores_rating'].mean():.2f
 col4.metric("Alcaldías", f"{df_filtered['neighbourhood_cleansed'].nunique()}")
 st.divider()
 viz = AirbnbViz()
-viz.render_mapa(df_filtered)
+viz.render_mapa(df_filtered, zoom_mapa=zoom_mapa)
 st.divider()
 
 # EDA
