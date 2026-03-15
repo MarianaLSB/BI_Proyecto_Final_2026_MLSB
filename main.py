@@ -22,7 +22,7 @@ alcaldia_sel = st.sidebar.multiselect("Alcaldía", alcaldias, default=alcaldias[
 room_types = sorted(df['room_type'].unique())
 room_sel = st.sidebar.multiselect("Tipo de cuarto", room_types, default=room_types)
 precio_max = st.sidebar.slider("Precio máximo (MXN)", 500, 10000, 5000, step=500)
-zoom_mapa = st.sidebar.slider("🔍 Zoom del mapa", min_value=10, max_value=16, value=11, step=1)
+zoom_mapa = st.sidebar.slider("Zoom del mapa", min_value=10, max_value=16, value=11, step=1)
 
 df_filtered = df[
     (df['neighbourhood_cleansed'].isin(alcaldia_sel)) &
