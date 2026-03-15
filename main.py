@@ -36,6 +36,8 @@ col1.metric("Total Listings", f"{len(df_filtered):,}")
 col2.metric("Precio Mediano", f"${df_filtered['price'].median():,.0f} MXN")
 col3.metric("Rating Promedio", f"{df_filtered['review_scores_rating'].mean():.2f} ⭐")
 col4.metric("Alcaldías", f"{df_filtered['neighbourhood_cleansed'].nunique()}")
+st.divider()
+viz.render_mapa(df_filtered)
 
 st.divider()
 
