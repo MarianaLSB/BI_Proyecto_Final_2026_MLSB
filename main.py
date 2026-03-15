@@ -37,13 +37,12 @@ col2.metric("Precio Mediano", f"${df_filtered['price'].median():,.0f} MXN")
 col3.metric("Rating Promedio", f"{df_filtered['review_scores_rating'].mean():.2f} ⭐")
 col4.metric("Alcaldías", f"{df_filtered['neighbourhood_cleansed'].nunique()}")
 st.divider()
+viz = AirbnbViz()
 viz.render_mapa(df_filtered)
-
 st.divider()
 
 # EDA
 st.subheader("Análisis Exploratorio de Datos")
-viz = AirbnbViz()
 
 col1, col2 = st.columns(2)
 with col1:
