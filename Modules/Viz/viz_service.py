@@ -87,9 +87,9 @@ class AirbnbViz:
         plt.close()
 
     def render_mapa(self, df):
-    import plotly.express as px
-    
-    st.markdown("### 🗺️ Mapa de Listings en CDMX")
+        import plotly.express as px
+        
+        st.markdown("### 🗺️ Mapa de Listings en CDMX")
     
     df_mapa = df[['latitude', 'longitude', 'room_type', 'price', 'name', 
                   'neighbourhood_cleansed']].dropna()
