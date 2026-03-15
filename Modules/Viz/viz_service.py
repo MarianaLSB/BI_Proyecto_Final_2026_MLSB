@@ -86,7 +86,7 @@ class AirbnbViz:
         st.pyplot(fig)
         plt.close()
 
-    def render_mapa(self, df, zoom_mapa=9)::
+    def render_mapa(self, df, zoom_mapa=9):
         import plotly.express as px
         
         st.markdown("### 🗺️ Mapa de Listings en CDMX")
@@ -113,7 +113,7 @@ class AirbnbViz:
                 'Hotel room':      '#FFB400',
                 'Shared room':     '#9370DB',
             },
-            zoom=zoom_mapa,,
+            zoom=zoom_mapa,
             center={'lat': 19.4326, 'lon': -99.1332},
             height=600,
             labels={'room_type': 'Tipo de cuarto', 'price': 'Precio (MXN)'}
