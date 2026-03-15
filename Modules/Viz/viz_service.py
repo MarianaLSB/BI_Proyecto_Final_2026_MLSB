@@ -87,7 +87,27 @@ class AirbnbViz:
         plt.close()
 
     def render_mapa(self, df):
-        st.markdown("### Mapa de Listings en CDMX")
-        df_mapa = df[['latitude', 'longitude', 'price', 'name', 'neighbourhood_cleansed']].dropna()
-        st.map(df_mapa, latitude='latitude', longitude='longitude', size=20, color='#FF5A5F')
-        st.caption(f"Mostrando {len(df_mapa):,} listings en el mapa")
+    st.markdown("### 🗺️ Mapa de Listings en CDMX")
+    
+    # Colores por tipo de cuarto
+    color_map = {
+        'Entire home/apt': [255, 90, 95],    # rojo Airbnb
+        'Private room':    [0, 166, 153],     # verde azulado
+        'Hotel room':      [255, 180, 0],     # amarillo
+        'Shared room':     [147, 112, 219],   # morado
+    }
+    
+    df_mapa = df[['latitude', 'longitude', 'room_type', 'price', 'name']].dropna()
+    df_mapa = df_mapa.copy()
+    df_mapa['color'] = df_mapa['room_type'].map(color_map).fillna([150, 150, 150])
+    
+    # Leyenda manual
+    col1, col2, col3, col4 = st.columns(4)
+    col1.markdown("🔴 Entire home/apt")
+    col2.markdown("🟢 Private room")
+    col3.markdown("🟡 Hotel room")
+    col4.markdown("🟣 Shared room")
+    
+    st.map(df_mapa, latitude='latitude', longitude='longitude', 
+           color='color', size=20)
+    st.caption(f"Mostrando {len(df_mapa):,} listings")
