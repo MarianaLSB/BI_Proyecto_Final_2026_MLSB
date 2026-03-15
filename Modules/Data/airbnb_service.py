@@ -15,7 +15,7 @@ class AirbnbService:
             cols = ['id', 'name', 'neighbourhood_cleansed', 'room_type', 'accommodates',
                     'bedrooms', 'beds', 'price', 'minimum_nights',
                     'number_of_reviews', 'review_scores_rating', 'host_is_superhost',
-                    'availability_365']
+                    'availability_365', 'latitude', 'longitude']
 
             df = pd.read_csv(_self.url, compression='gzip', usecols=cols)
 
@@ -27,7 +27,6 @@ class AirbnbService:
             # Imputar nulos
             df['bedrooms'] = df['bedrooms'].fillna(1)
             df['beds'] = df['beds'].fillna(1)
-            df['bathrooms_text'] = 'N/A'
             df['review_scores_rating'] = df['review_scores_rating'].fillna(
                 df['review_scores_rating'].median())
             df['host_is_superhost'] = df['host_is_superhost'].fillna('f')
