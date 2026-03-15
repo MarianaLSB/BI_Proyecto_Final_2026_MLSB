@@ -87,27 +87,41 @@ class AirbnbViz:
         plt.close()
 
     def render_mapa(self, df):
+    import plotly.express as px
+    
     st.markdown("### 🗺️ Mapa de Listings en CDMX")
     
-    # Colores por tipo de cuarto
-    color_map = {
-        'Entire home/apt': [255, 90, 95],    # rojo Airbnb
-        'Private room':    [0, 166, 153],     # verde azulado
-        'Hotel room':      [255, 180, 0],     # amarillo
-        'Shared room':     [147, 112, 219],   # morado
-    }
+    df_mapa = df[['latitude', 'longitude', 'room_type', 'price', 'name', 
+                  'neighbourhood_cleansed']].dropna()
     
-    df_mapa = df[['latitude', 'longitude', 'room_type', 'price', 'name']].dropna()
-    df_mapa = df_mapa.copy()
-    df_mapa['color'] = df_mapa['room_type'].map(color_map).fillna([150, 150, 150])
-    
-    # Leyenda manual
-    col1, col2, col3, col4 = st.columns(4)
-    col1.markdown("🔴 Entire home/apt")
-    col2.markdown("🟢 Private room")
-    col3.markdown("🟡 Hotel room")
-    col4.markdown("🟣 Shared room")
-    
-    st.map(df_mapa, latitude='latitude', longitude='longitude', 
-           color='color', size=20)
+    fig = px.scatter_mapbox(
+        df_mapa,
+        lat='latitude',
+        lon='longitude',
+        color='room_type',
+        hover_name='name',
+        hover_data={
+            'neighbourhood_cleansed': True,
+            'price': ':,.0f',
+            'room_type': True,
+            'latitude': False,
+            'longitude': False
+        },
+        color_discrete_map={
+            'Entire home/apt': '#FF5A5F',
+            'Private room':    '#00A699',
+            'Hotel room':      '#FFB400',
+            'Shared room':     '#9370DB',
+        },
+        zoom=10,
+        center={'lat': 19.4326, 'lon': -99.1332},
+        height=600,
+        labels={'room_type': 'Tipo de cuarto', 'price': 'Precio (MXN)'}
+    )
+    fig.update_layout(
+        mapbox_style='carto-positron',
+        margin={'r':0,'t':0,'l':0,'b':0},
+        legend_title_text='Tipo de cuarto'
+    )
+    st.plotly_chart(fig, use_container_width=True)
     st.caption(f"Mostrando {len(df_mapa):,} listings")
