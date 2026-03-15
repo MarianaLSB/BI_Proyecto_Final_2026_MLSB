@@ -6,5 +6,5 @@ def show_header(text_title: str):
         st.image("imagenes/UPlogo.jpg", width=200)
     with col2:
         st.title(text_title)
-        st.caption("📚 Developed for: *Business Intelligence (Graduate Level)*")
+        st.caption("Developed for: *Business Intelligence*")
         st.caption("Mariana Lopez S Ballesteros (2026), Universidad Panamericana")
