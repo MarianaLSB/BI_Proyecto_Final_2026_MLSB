@@ -91,37 +91,37 @@ class AirbnbViz:
         
         st.markdown("### 🗺️ Mapa de Listings en CDMX")
     
-    df_mapa = df[['latitude', 'longitude', 'room_type', 'price', 'name', 
-                  'neighbourhood_cleansed']].dropna()
-    
-    fig = px.scatter_mapbox(
-        df_mapa,
-        lat='latitude',
-        lon='longitude',
-        color='room_type',
-        hover_name='name',
-        hover_data={
-            'neighbourhood_cleansed': True,
-            'price': ':,.0f',
-            'room_type': True,
-            'latitude': False,
-            'longitude': False
-        },
-        color_discrete_map={
-            'Entire home/apt': '#FF5A5F',
-            'Private room':    '#00A699',
-            'Hotel room':      '#FFB400',
-            'Shared room':     '#9370DB',
-        },
-        zoom=10,
-        center={'lat': 19.4326, 'lon': -99.1332},
-        height=600,
-        labels={'room_type': 'Tipo de cuarto', 'price': 'Precio (MXN)'}
-    )
-    fig.update_layout(
-        mapbox_style='carto-positron',
-        margin={'r':0,'t':0,'l':0,'b':0},
-        legend_title_text='Tipo de cuarto'
-    )
-    st.plotly_chart(fig, use_container_width=True)
-    st.caption(f"Mostrando {len(df_mapa):,} listings")
+        df_mapa = df[['latitude', 'longitude', 'room_type', 'price', 'name', 
+                      'neighbourhood_cleansed']].dropna()
+        
+        fig = px.scatter_mapbox(
+            df_mapa,
+            lat='latitude',
+            lon='longitude',
+            color='room_type',
+            hover_name='name',
+            hover_data={
+                'neighbourhood_cleansed': True,
+                'price': ':,.0f',
+                'room_type': True,
+                'latitude': False,
+                'longitude': False
+            },
+            color_discrete_map={
+                'Entire home/apt': '#FF5A5F',
+                'Private room':    '#00A699',
+                'Hotel room':      '#FFB400',
+                'Shared room':     '#9370DB',
+            },
+            zoom=10,
+            center={'lat': 19.4326, 'lon': -99.1332},
+            height=600,
+            labels={'room_type': 'Tipo de cuarto', 'price': 'Precio (MXN)'}
+        )
+        fig.update_layout(
+            mapbox_style='carto-positron',
+            margin={'r':0,'t':0,'l':0,'b':0},
+            legend_title_text='Tipo de cuarto'
+        )
+        st.plotly_chart(fig, use_container_width=True)
+        st.caption(f"Mostrando {len(df_mapa):,} listings")
