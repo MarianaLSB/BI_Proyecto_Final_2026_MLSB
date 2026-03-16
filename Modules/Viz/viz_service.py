@@ -86,7 +86,7 @@ class AirbnbViz:
         st.pyplot(fig)
         plt.close()
 
-        def render_mapa(self, df, zoom_mapa=10):
+    def render_mapa(self, df, zoom_mapa=10):
         import plotly.express as px
         
         st.markdown("### 🗺️ Mapa de Listings en CDMX")
