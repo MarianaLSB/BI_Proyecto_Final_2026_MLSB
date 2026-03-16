@@ -35,7 +35,7 @@ class AirbnbViz:
         room_price = df.groupby('room_type')['price'].median().sort_values(ascending=False)
         fig, ax = plt.subplots(figsize=(8, 4))
         ax.bar(room_price.index, room_price.values, color='mediumseagreen')
-        ax.set_title("Precio Mediano por Tipo de Cuarto")
+        ax.set_title("Precio Promedio por Tipo de Alojamiento")
         ax.set_ylabel("Precio Mediano (MXN)")
         ax.tick_params(axis='x', rotation=15)
         st.pyplot(fig)
