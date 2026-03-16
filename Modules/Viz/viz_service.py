@@ -93,6 +93,8 @@ class AirbnbViz:
     
         df_mapa = df[['latitude', 'longitude', 'room_type', 'price', 'name', 
                       'neighbourhood_cleansed']].dropna()
+        lat_center = df_mapa['latitude'].mean()
+        lon_center = df_mapa['longitude'].mean()
         
         fig = px.scatter_mapbox(
             df_mapa,
@@ -114,7 +116,7 @@ class AirbnbViz:
                 'Shared room':     '#9370DB',
             },
             zoom=zoom_mapa,
-            center={'lat': 19.4326, 'lon': -99.1332},
+            center={'lat': lat_center, 'lon': lon_center},
             height=600,
             labels={'room_type': 'Tipo de cuarto', 'price': 'Precio (MXN)'}
         )
